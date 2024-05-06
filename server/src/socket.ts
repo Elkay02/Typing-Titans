@@ -12,6 +12,10 @@ const socket = (server: HttpServer) => {
 
   io.on('connection', (socket: Socket) => {
     socket.broadcast.emit('connected');
+
+    socket.on('enter', () => {
+      console.log('enter key');
+    })
   });
 };
 
