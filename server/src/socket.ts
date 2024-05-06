@@ -15,7 +15,11 @@ const socket = (server: HttpServer) => {
 
     socket.on('enter', () => {
       console.log('enter key');
-    })
+    });
+
+    socket.on('input', (value) => {
+      console.log('input: ', value);
+    });
   });
 };
 
