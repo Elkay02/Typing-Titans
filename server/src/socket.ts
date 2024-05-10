@@ -22,9 +22,9 @@ const socket = (server: HttpServer) => {
     socket.broadcast.emit('connected');
 
     socket.on('end-competition', (typingSpeed, time) => {
-      const speed = `Typing speed: ${ typingSpeed } words per minute 🐇`;
+      const speed = `Typing speed: ${typingSpeed} words per minute 🐇`;
 
-      socket.broadcast.emit('winner', `${ userNames[socket.id]
+      socket.broadcast.emit('winner', `${userNames[socket.id]
         ? userNames[socket.id]
         : 'Another player'
       } has won!`, speed, time);
@@ -39,7 +39,7 @@ const socket = (server: HttpServer) => {
     socket.on('isReady', () => {
       readyPlayers = readyPlayers.includes(socket.id)
         ? readyPlayers.filter(id => id != socket.id)
-        : [ ...readyPlayers, socket.id ];
+        : [...readyPlayers, socket.id];
 
       if (readyPlayers.length > 1) {
         io.emit('countdown');
