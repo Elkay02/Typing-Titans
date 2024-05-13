@@ -1,162 +1,361 @@
 [
     {
         "name": "switch windows",
-        "windows": ["alt", "tab"],
-        "mac": ["command", "tab"]
+        "windows": [
+            "Alt",
+            "Tab"
+        ],
+        "mac": [
+            "Meta",
+            "Tab"
+        ]
     },
     {
         "name": "file menu",
-        "windows": ["alt", "f"],
-        "mac": ["command", "f"]
+        "windows": [
+            "Alt",
+            "f"
+        ],
+        "mac": [
+            "Meta",
+            "f"
+        ]
     },
     {
         "name": "previous history",
-        "windows": ["alt", "left arrow"],
-        "mac": ["command", "left arrow"]
+        "windows": [
+            "Alt",
+            "ArrowLeft"
+        ],
+        "mac": [
+            "Meta",
+            "ArrowLeft"
+        ]
     },
     {
         "name": "forward in browser",
-        "windows": ["alt", "right arrow"],
-        "mac": ["command", "right arrow"]
+        "windows": [
+            "Alt",
+            "ArrowRight"
+        ],
+        "mac": [
+            "Meta",
+            "ArrowRight"
+        ]
     },
     {
         "name": "show properties",
-        "windows": ["alt", "enter"],
-        "mac": ["command", "i"]
+        "windows": [
+            "Alt",
+            "Enter"
+        ],
+        "mac": [
+            "Meta",
+            "i"
+        ]
     },
     {
         "name": "select all",
-        "windows": ["ctrl", "a"],
-        "mac": ["command", "a"]
+        "windows": [
+            "Control",
+            "a"
+        ],
+        "mac": [
+            "Meta",
+            "a"
+        ]
     },
     {
         "name": "cut",
-        "windows": ["ctrl", "x"],
-        "mac": ["command", "x"]
+        "windows": [
+            "Control",
+            "x"
+        ],
+        "mac": [
+            "Meta",
+            "x"
+        ]
     },
     {
         "name": "delete",
-        "windows": ["ctrl", "del"],
-        "mac": ["command", "delete"]
+        "windows": [
+            "Control",
+            "Delete"
+        ],
+        "mac": [
+            "Meta",
+            "Delete"
+        ]
     },
     {
         "name": "copy",
-        "windows": ["ctrl", "c"],
-        "mac": ["command", "c"]
+        "windows": [
+            "Control",
+            "c"
+        ],
+        "mac": [
+            "Meta",
+            "c"
+        ]
     },
     {
         "name": "paste",
-        "windows": ["ctrl", "v"],
-        "mac": ["command", "v"]
+        "windows": [
+            "Control",
+            "v"
+        ],
+        "mac": [
+            "Meta",
+            "v"
+        ]
     },
     {
         "name": "save",
-        "windows": ["ctrl", "s"],
-        "mac": ["command", "s"]
+        "windows": [
+            "Control",
+            "s"
+        ],
+        "mac": [
+            "Meta",
+            "s"
+        ]
     },
     {
         "name": "undo",
-        "windows": ["ctrl", "z"],
-        "mac": ["command", "z"]
+        "windows": [
+            "Control",
+            "z"
+        ],
+        "mac": [
+            "Meta",
+            "z"
+        ]
     },
     {
         "name": "task manager",
-        "windows": ["ctrl", "alt", "del"],
-        "mac": ["command", "option", "esc"]
+        "windows": [
+            "Control",
+            "Alt",
+            "Delete"
+        ],
+        "mac": [
+            "Meta",
+            "Alt",
+            "Escape"
+        ]
     },
     {
         "name": "new window/document",
-        "windows": ["ctrl", "n"],
-        "mac": ["command", "n"]
+        "windows": [
+            "Control",
+            "n"
+        ],
+        "mac": [
+            "Meta",
+            "n"
+        ]
     },
     {
         "name": "history",
-        "windows": ["ctrl", "h"],
-        "mac": ["command", "y"]
+        "windows": [
+            "Control",
+            "h"
+        ],
+        "mac": [
+            "Meta",
+            "y"
+        ]
     },
     {
         "name": "downloads",
-        "windows": ["ctrl", "j"],
-        "mac": ["command", "option", "l"]
+        "windows": [
+            "Control",
+            "j"
+        ],
+        "mac": [
+            "Meta",
+            "Alt",
+            "l"
+        ]
     },
     {
         "name": "find",
-        "windows": ["ctrl", "f"],
-        "mac": ["command", "f"]
+        "windows": [
+            "Control",
+            "f"
+        ],
+        "mac": [
+            "Meta",
+            "f"
+        ]
     },
     {
         "name": "print",
-        "windows": ["ctrl", "p"],
-        "mac": ["command", "p"]
+        "windows": [
+            "Control",
+            "p"
+        ],
+        "mac": [
+            "Meta",
+            "p"
+        ]
     },
     {
         "name": "start menu",
-        "windows": ["ctrl", "esc"],
-        "mac": ["command", "option", "esc"]
+        "windows": [
+            "Control",
+            "Escape"
+        ],
+        "mac": [
+            "Meta",
+            "Alt",
+            "Escape"
+        ]
     },
     {
         "name": "zoom in",
-        "windows": ["ctrl", "+"],
-        "mac": ["command", "+"]
+        "windows": [
+            "Control",
+            "+"
+        ],
+        "mac": [
+            "Meta",
+            "+"
+        ]
     },
     {
         "name": "zoom out",
-        "windows": ["ctrl", "-"],
-        "mac": ["command", "-"]
+        "windows": [
+            "Control",
+            "-"
+        ],
+        "mac": [
+            "Meta",
+            "-"
+        ]
     },
     {
-        "name": "close tab",
-        "windows": ["ctrl", "w"],
-        "mac": ["command", "w"]
+        "name": "close Tab",
+        "windows": [
+            "Control",
+            "w"
+        ],
+        "mac": [
+            "Meta",
+            "w"
+        ]
     },
     {
-        "name": "new tab",
-        "windows": ["ctrl", "t"],
-        "mac": ["command", "t"]
+        "name": "new Tab",
+        "windows": [
+            "Control",
+            "t"
+        ],
+        "mac": [
+            "Meta",
+            "t"
+        ]
     },
     {
         "name": "permanent delete",
-        "windows": ["shift", "delete"],
-        "mac": ["command", "delete"]
+        "windows": [
+            "Shift",
+            "Delete"
+        ],
+        "mac": [
+            "Meta",
+            "Delete"
+        ]
     },
     {
         "name": "redo",
-        "windows": ["ctrl", "y"],
-        "mac": ["command", "shift", "z"]
+        "windows": [
+            "Control",
+            "y"
+        ],
+        "mac": [
+            "Meta",
+            "Shift",
+            "z"
+        ]
     },
     {
         "name": "insert hyperlink",
-        "windows": ["ctrl", "k"],
-        "mac": ["command", "k"]
+        "windows": [
+            "Control",
+            "k"
+        ],
+        "mac": [
+            "Meta",
+            "k"
+        ]
     },
     {
         "name": "lock computer",
-        "windows": ["windows", "l"],
-        "mac": ["command", "control", "q"]
+        "windows": [
+            "Meta",
+            "l"
+        ],
+        "mac": [
+            "Meta",
+            "Control",
+            "q"
+        ]
     },
     {
         "name": "power user menu",
-        "windows": ["windows", "x"],
-        "mac": ["control", "f3"]
+        "windows": [
+            "Meta",
+            "x"
+        ],
+        "mac": [
+            "Control",
+            "f3"
+        ]
     },
     {
         "name": "minimize window",
-        "windows": ["windows", "down arrow"],
-        "mac": ["command", "m"]
+        "windows": [
+            "Meta",
+            "ArrowDown"
+        ],
+        "mac": [
+            "Meta",
+            "m"
+        ]
     },
     {
         "name": "maximize window",
-        "windows": ["windows", "up arrow"],
-        "mac": ["command", "option", "m"]
+        "windows": [
+            "Meta",
+            "ArrowUp"
+        ],
+        "mac": [
+            "Meta",
+            "Alt",
+            "m"
+        ]
     },
     {
         "name": "move left word",
-        "windows": ["ctrl", "left arrow"],
-        "mac": ["option", "left arrow"]
+        "windows": [
+            "Control",
+            "ArrowLeft"
+        ],
+        "mac": [
+            "Alt",
+            "ArrowLeft"
+        ]
     },
     {
         "name": "move right word",
-        "windows": ["ctrl", "right arrow"],
-        "mac": ["option", "right arrow"]
+        "windows": [
+            "Control",
+            "ArrowRight"
+        ],
+        "mac": [
+            "Alt",
+            "ArrowRight"
+        ]
     }
 ]

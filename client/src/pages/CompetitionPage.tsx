@@ -1,6 +1,7 @@
 
-import CompetitionCard from '../components/CompetitionCard/CompetitionCard';
+// import CompetitionCard from '../components/CompetitionCard/CompetitionCard';
 import Navbar from '../components/Navbar/Navbar'
+import Shortcut from '../components/Shortcut/Shortcut';
 import Sidebar from '../components/Sidebar/Sidebar'
 
 
@@ -9,7 +10,7 @@ const CompetitionPage = () => {
     <div>
       <Navbar />
       <Sidebar />
-      <CompetitionCard />
+      <Shortcut />
     </div>
   );
 }

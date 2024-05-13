@@ -1,0 +1,48 @@
+.shortcut-card-container {
+  display: flex;
+  min-height: 800px;
+  margin: 30px 125px -10px 205px;
+  background-color: var(--main-bg-color);
+  border-radius: 20px;
+  filter: drop-shadow(0px 5px 4px gray);
+  color: var(--main-color);
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.shortcut-div {
+  align-content: center;
+  color: black;
+  font-size: 10vh
+}
+
+.shortcut-title {
+  align-self: center;
+  font-size: 48px;
+}
+
+.shortcut-button{
+  align-self: center;
+  justify-self: center;
+  color: white;
+  background-color: var(--main-color);
+  border: 0;
+  padding: 1vh 1vw;
+  width: 20vh;
+  height: 5vh;
+  font-size: 2vh;
+  border-radius: 1vh;
+}
+
+.shortcut-time {
+    align-self: center;
+      height: 5vh;
+      font-size: 2vh;
+}
+
+.shortcut-hint {
+  align-self: center;
+  height: 5vh;
+  font-size: 2vh;
+  display: inline;
+}
