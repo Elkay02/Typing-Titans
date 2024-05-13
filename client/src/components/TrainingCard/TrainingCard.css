@@ -1,0 +1,54 @@
+.training-card-container {
+  display: grid;
+  max-height: 800px;
+  margin: 30px 125px -10px 205px;
+  background-color: var(--main-bg-color);
+  border-radius: 20px;
+  filter: drop-shadow(0px 5px 4px gray);
+  grid-template-rows: 1fr 2fr 4fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  color: var(--main-color);
+}
+
+.training-title {
+  grid-column: 1 / 4;
+  align-self: center;
+  font-size: 48px;
+}
+
+.progress-container {
+  grid-column: 1 / 4;
+}
+
+.lessons-container {
+  grid-column: 1 / 4;
+  overflow-y: scroll;
+  margin-bottom: 15px;
+}
+
+.progress-title,
+.lessons-title {
+  display: flex;
+  font-size: 30px;
+  margin-left: 5%;
+}
+
+.lessons-title {
+  margin-bottom: 25px;
+}
+
+.lessons-container div {
+  font-size: 26px;
+  display: flex;
+  color: var(--main-bg-color);
+  background-color: var(--main-color);
+  margin: 0% 5%;
+  padding: 25px;
+  border-bottom: 1px solid var(--main-bg-color);
+}
+
+.lessons-container div:hover {
+  transform: scale(1.01);
+}
+
+
