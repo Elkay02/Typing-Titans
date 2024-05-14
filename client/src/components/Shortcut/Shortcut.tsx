@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './Shortcut.css';
 import socket from '../../socket';
 import Overlay from '../Overlay/Overlay';
+import { useAppSelector } from '../../redux/hooks';
 
 interface Shortcut {
   name: string;
@@ -10,68 +11,10 @@ interface Shortcut {
 }
 
 const Shortcut = () => {
-  const [shortcuts, setShortcuts] = useState<Shortcut[]>([
-    {
-      name: "show properties",
-      windows: ["Alt", "Enter"],
-      mac: ["Meta", "i"]
-    },
-    {
-      name: "select all",
-      windows: ["Control", "a"],
-      mac: ["Meta", "a"]
-    },
-    // {
-    //   name: "cut",
-    //   windows: ["Control", "x"],
-    //   mac: ["Meta", "x"]
-    // },
-    // {
-    //   name: "delete",
-    //   windows: ["Control", "Delete"],
-    //   mac: ["Meta", "Delete"]
-    // },
-    // {
-    //   name: "copy",
-    //   windows: ["Control", "c"],
-    //   mac: ["Meta", "c"]
-    // },
-    // {
-    //   name: "paste",
-    //   windows: ["Control", "v"],
-    //   mac: ["Meta", "v"]
-    // },
-    // {
-    //   name: "save",
-    //   windows: ["Control", "s"],
-    //   mac: ["Meta", "s"]
-    // },
-    // {
-    //   name: "undo",
-    //   windows: ["Control", "z"],
-    //   mac: ["Meta", "z"]
-    // },
-    // {
-    //   name: "find",
-    //   windows: ["Control", "f"],
-    //   mac: ["Meta", "f"]
-    // },
-    // {
-    //   name: "print",
-    //   windows: ["Control", "p"],
-    //   mac: ["Meta", "p"]
-    // },
-    // {
-    //   name: "zoom in",
-    //   windows: ["Control", "+"],
-    //   mac: ["Meta", "+"]
-    // },
-    // {
-    //   name: "zoom out",
-    //   windows: ["Control", "-"],
-    //   mac: ["Meta", "-"]
-    // }
-  ]);
+
+  const fetchedShortcuts = useAppSelector((state) => state.shortcut);
+
+  const [shortcuts, setShortcuts] = useState<Shortcut[]>(fetchedShortcuts);
 
   const countdown: string[] = ['5', '4', '3', '2', '1', 'Reveal Answer'];
 
@@ -154,7 +97,6 @@ const Shortcut = () => {
   
   useEffect(() => {
     socket.on('winner', () => {
-    console.log('socket.on ~ winner:');
     setEnded(true)
   })
   }, []);

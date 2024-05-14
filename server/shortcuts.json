@@ -1,15 +1,5 @@
 [
-    {
-        "name": "switch windows",
-        "windows": [
-            "Alt",
-            "Tab"
-        ],
-        "mac": [
-            "Meta",
-            "Tab"
-        ]
-    },
+
     {
         "name": "file menu",
         "windows": [
@@ -41,17 +31,6 @@
         "mac": [
             "Meta",
             "ArrowRight"
-        ]
-    },
-    {
-        "name": "show properties",
-        "windows": [
-            "Alt",
-            "Enter"
-        ],
-        "mac": [
-            "Meta",
-            "i"
         ]
     },
     {
@@ -132,27 +111,14 @@
         ]
     },
     {
-        "name": "task manager",
+        "name": "refresh",
         "windows": [
             "Control",
-            "Alt",
-            "Delete"
+            "r"
         ],
         "mac": [
             "Meta",
-            "Alt",
-            "Escape"
-        ]
-    },
-    {
-        "name": "new window/document",
-        "windows": [
-            "Control",
-            "n"
-        ],
-        "mac": [
-            "Meta",
-            "n"
+            "r"
         ]
     },
     {
@@ -201,18 +167,6 @@
         ]
     },
     {
-        "name": "start menu",
-        "windows": [
-            "Control",
-            "Escape"
-        ],
-        "mac": [
-            "Meta",
-            "Alt",
-            "Escape"
-        ]
-    },
-    {
         "name": "zoom in",
         "windows": [
             "Control",
@@ -232,39 +186,6 @@
         "mac": [
             "Meta",
             "-"
-        ]
-    },
-    {
-        "name": "close Tab",
-        "windows": [
-            "Control",
-            "w"
-        ],
-        "mac": [
-            "Meta",
-            "w"
-        ]
-    },
-    {
-        "name": "new Tab",
-        "windows": [
-            "Control",
-            "t"
-        ],
-        "mac": [
-            "Meta",
-            "t"
-        ]
-    },
-    {
-        "name": "permanent delete",
-        "windows": [
-            "Shift",
-            "Delete"
-        ],
-        "mac": [
-            "Meta",
-            "Delete"
         ]
     },
     {
@@ -288,52 +209,6 @@
         "mac": [
             "Meta",
             "k"
-        ]
-    },
-    {
-        "name": "lock computer",
-        "windows": [
-            "Meta",
-            "l"
-        ],
-        "mac": [
-            "Meta",
-            "Control",
-            "q"
-        ]
-    },
-    {
-        "name": "power user menu",
-        "windows": [
-            "Meta",
-            "x"
-        ],
-        "mac": [
-            "Control",
-            "f3"
-        ]
-    },
-    {
-        "name": "minimize window",
-        "windows": [
-            "Meta",
-            "ArrowDown"
-        ],
-        "mac": [
-            "Meta",
-            "m"
-        ]
-    },
-    {
-        "name": "maximize window",
-        "windows": [
-            "Meta",
-            "ArrowUp"
-        ],
-        "mac": [
-            "Meta",
-            "Alt",
-            "m"
         ]
     },
     {

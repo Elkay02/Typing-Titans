@@ -8,6 +8,13 @@ import UserNameForm from '../UserNameForm/UserNameForm';
 import socket from '../../socket';
 import { useAppDispatch } from '../../redux/hooks';
 import { setSentence } from '../../redux/sentence';
+import { setShortcut } from '../../redux/shortcut';
+
+interface Shortcut {
+  name: string;
+  windows: string[];
+  mac: string[];
+}
 
 const MultiplayerCard = () => {
   const pathname = window.location.pathname.split('/').pop() || "";
@@ -15,9 +22,17 @@ const MultiplayerCard = () => {
   const title = pathname.charAt(0).toUpperCase() + pathname.slice(1)
   const dispatch = useAppDispatch();
 
-  socket.on('sentence', (sentence: string) => {
-    dispatch(setSentence(sentence));
-  });
+  if (pathname === "typing") {
+    socket.on('sentence', (sentence: string) => {
+      dispatch(setSentence(sentence));
+    });
+  }
+  if (pathname === "shortcut") {
+    socket.on('shortcuts', (shortcut: Shortcut[]) => {
+      console.log('socket.on ~ shortcut:', shortcut);
+      dispatch(setShortcut(shortcut));
+    });
+  }
 
   return (
     <div className="multiplayer-card-container">
