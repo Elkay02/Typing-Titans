@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import './Shortcut.css';
+import socket from '../../socket';
+import Overlay from '../Overlay/Overlay';
 
 interface Shortcut {
   name: string;
@@ -19,56 +21,56 @@ const Shortcut = () => {
       windows: ["Control", "a"],
       mac: ["Meta", "a"]
     },
-    {
-      name: "cut",
-      windows: ["Control", "x"],
-      mac: ["Meta", "x"]
-    },
-    {
-      name: "delete",
-      windows: ["Control", "Delete"],
-      mac: ["Meta", "Delete"]
-    },
-    {
-      name: "copy",
-      windows: ["Control", "c"],
-      mac: ["Meta", "c"]
-    },
-    {
-      name: "paste",
-      windows: ["Control", "v"],
-      mac: ["Meta", "v"]
-    },
-    {
-      name: "save",
-      windows: ["Control", "s"],
-      mac: ["Meta", "s"]
-    },
-    {
-      name: "undo",
-      windows: ["Control", "z"],
-      mac: ["Meta", "z"]
-    },
-    {
-      name: "find",
-      windows: ["Control", "f"],
-      mac: ["Meta", "f"]
-    },
-    {
-      name: "print",
-      windows: ["Control", "p"],
-      mac: ["Meta", "p"]
-    },
-    {
-      name: "zoom in",
-      windows: ["Control", "+"],
-      mac: ["Meta", "+"]
-    },
-    {
-      name: "zoom out",
-      windows: ["Control", "-"],
-      mac: ["Meta", "-"]
-    }
+    // {
+    //   name: "cut",
+    //   windows: ["Control", "x"],
+    //   mac: ["Meta", "x"]
+    // },
+    // {
+    //   name: "delete",
+    //   windows: ["Control", "Delete"],
+    //   mac: ["Meta", "Delete"]
+    // },
+    // {
+    //   name: "copy",
+    //   windows: ["Control", "c"],
+    //   mac: ["Meta", "c"]
+    // },
+    // {
+    //   name: "paste",
+    //   windows: ["Control", "v"],
+    //   mac: ["Meta", "v"]
+    // },
+    // {
+    //   name: "save",
+    //   windows: ["Control", "s"],
+    //   mac: ["Meta", "s"]
+    // },
+    // {
+    //   name: "undo",
+    //   windows: ["Control", "z"],
+    //   mac: ["Meta", "z"]
+    // },
+    // {
+    //   name: "find",
+    //   windows: ["Control", "f"],
+    //   mac: ["Meta", "f"]
+    // },
+    // {
+    //   name: "print",
+    //   windows: ["Control", "p"],
+    //   mac: ["Meta", "p"]
+    // },
+    // {
+    //   name: "zoom in",
+    //   windows: ["Control", "+"],
+    //   mac: ["Meta", "+"]
+    // },
+    // {
+    //   name: "zoom out",
+    //   windows: ["Control", "-"],
+    //   mac: ["Meta", "-"]
+    // }
   ]);
 
   const countdown: string[] = ['5', '4', '3', '2', '1', 'Reveal Answer'];
@@ -89,7 +91,7 @@ const Shortcut = () => {
       const currentShortcut = shortcuts[0];
       setInput(prevInput => [...prevInput, event.key]);
 
-      const inputLength = input.length + 1; // Including the current key press
+      const inputLength = input.length + 1;
       const lastKeys = [...input, event.key].slice(inputLength - currentShortcut.windows.length, inputLength);
 
       const windowsMatch = JSON.stringify(lastKeys) === JSON.stringify(currentShortcut.windows);
@@ -143,11 +145,23 @@ const Shortcut = () => {
         clearInterval(timer);
         setEnded(true);
         setIsRunning(false);
+        socket.emit('end-competition', time);
       }
     }
 
     return () => clearInterval(timer);
-  }, [isRunning, shortcuts]);
+  }, [isRunning, shortcuts, time]);
+  
+  useEffect(() => {
+    socket.on('winner', () => {
+    console.log('socket.on ~ winner:');
+    setEnded(true)
+  })
+  }, []);
+
+  socket.on('start-competition', () => {
+    setEnded(false);
+  });
   
 
   return (
@@ -160,6 +174,7 @@ const Shortcut = () => {
         {!hint && <button className='shortcut-button' onClick={() => { if (reveal) setHint(true) }}>{countdown[myIndex]}</button>}
         <h5 className='shortcut-hint'>{hint && `Windows: ${shortcuts[0].windows.join(' + ')} / Mac: ${shortcuts[0].mac.join(' + ')} `}</h5>
       </div>
+       <Overlay ended={ended} />
     </div>
   );
 };

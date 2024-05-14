@@ -117,7 +117,7 @@ const Sentence = () => {
       <h3 className='stats'>Time: { (Math.round(time * 100) / 100).toFixed(1) } s</h3>
       <h3 className='stats'>Speed: { (Math.round(speed * 100) / 100).toFixed(0) } words/min</h3>
       <h3 className='stats'>Accuracy: { (Math.round(accuracy * 100) / 100).toFixed(1) } %</h3>
-      {ended && <Overlay />}
+      <Overlay ended={ended} />
     </div>
   )
 }

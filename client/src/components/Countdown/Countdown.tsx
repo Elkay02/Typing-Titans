@@ -17,7 +17,7 @@ const Countdown = ({path}: {path: string}) => {
     if (value === 'Go') {
       setTimeout(() => navigate(`/competition/${path}`), 1000);
     }
-  }, [ value, navigate ]);
+  }, [value, navigate, path]);
 
   useEffect(() => {
     socket.on('countdown', () => {
