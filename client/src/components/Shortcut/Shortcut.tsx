@@ -148,6 +148,7 @@ const Shortcut = () => {
 
     return () => clearInterval(timer);
   }, [isRunning, shortcuts]);
+  
 
   return (
     <div className="shortcut-card-container">

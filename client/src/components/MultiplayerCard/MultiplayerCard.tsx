@@ -10,7 +10,11 @@ import { useAppDispatch } from '../../redux/hooks';
 import { setSentence } from '../../redux/sentence';
 
 const MultiplayerCard = () => {
+  const pathname = window.location.pathname.split('/').pop() || "";
+  console.log('MultiplayerCard ~ pathname:', pathname);
 
+  const title = pathname.charAt(0).toUpperCase() + pathname.slice(1)
+  console.log('MultiplayerCard ~ title:', title);
   const dispatch = useAppDispatch();
 
   socket.on('sentence', (sentence: string) => {
@@ -19,7 +23,7 @@ const MultiplayerCard = () => {
 
   return (
     <div className="multiplayer-card-container">
-      <h2 className='multiplayer-title'>Typing Race</h2>
+      <h2 className='multiplayer-title'>{title} Race</h2>
       <div className='player-one-container'>
         <h4 className='player-title one'>Player One</h4>
         <img src={Player1} alt="Player 1 Icon" />
@@ -31,7 +35,7 @@ const MultiplayerCard = () => {
       </div>
       <ReadyButton />
       <div className='countdown-container'>
-        <Countdown />
+        <Countdown path={pathname} />
       </div>
     </div>
   )

@@ -7,7 +7,7 @@ import socket from '../../socket';
 
 const COUNTDOWN: string[] = ['5', '4', '3', '2', '1', 'Go'];
 
-const Countdown = () => {
+const Countdown = ({path}: {path: string}) => {
 
   const { value, scale } = useAppSelector(state => state.countdown);
   const dispatch = useAppDispatch();
@@ -15,7 +15,7 @@ const Countdown = () => {
 
   useEffect(() => {
     if (value === 'Go') {
-      setTimeout(() => navigate('/competition'), 1000);
+      setTimeout(() => navigate(`/competition/${path}`), 1000);
     }
   }, [ value, navigate ]);
 

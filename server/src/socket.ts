@@ -39,8 +39,8 @@ const socket = (server: HttpServer) => {
 
     socket.on('isReady', async () => {
       readyPlayers = readyPlayers.includes(socket.id)
-        ? readyPlayers.filter(id => id != socket.id)
-        : [ ...readyPlayers, socket.id ];
+      ? readyPlayers.filter(id => id != socket.id)
+      : [ ...readyPlayers, socket.id ];
 
       if (readyPlayers.length > 1) {
         io.emit('countdown');

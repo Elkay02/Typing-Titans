@@ -16,10 +16,11 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path='/multiplayer' element={<MultiplayerPage />} />
           <Route path='/competition' element={<CompetitionPage />} />
           <Route path='/training' element={<TrainingPage />} />
           <Route path="/lessons" element={<LessonsPage />} />
+          <Route path='/lobby/:game' element={<MultiplayerPage />} />
+          <Route path='/competition/:game' element={<CompetitionPage />} />
         </Routes>
       </Router>
     </>

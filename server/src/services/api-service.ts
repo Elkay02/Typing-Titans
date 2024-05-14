@@ -10,7 +10,7 @@ export const fetchSentence = async (): Promise<string> => {
   });
 
   if (!response.ok) {
-    throw new Error('Failed to fetch exercises');
+    throw new Error('Failed to fetch sentence');
   }
 
   const data = await response.json();
