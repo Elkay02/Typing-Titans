@@ -11,10 +11,8 @@ import { setSentence } from '../../redux/sentence';
 
 const MultiplayerCard = () => {
   const pathname = window.location.pathname.split('/').pop() || "";
-  console.log('MultiplayerCard ~ pathname:', pathname);
 
   const title = pathname.charAt(0).toUpperCase() + pathname.slice(1)
-  console.log('MultiplayerCard ~ title:', title);
   const dispatch = useAppDispatch();
 
   socket.on('sentence', (sentence: string) => {

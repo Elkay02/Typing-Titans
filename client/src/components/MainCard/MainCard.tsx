@@ -4,15 +4,17 @@ import './MainCard.css'
 
 interface MainCardProps {
   title: string;
-  imgSrc?: string;
+  imgSrc1?: string;
+  imgSrc2?: string;
 }
 
-const MainCard = ({ title, imgSrc }: MainCardProps) => {
+const MainCard = ({ title, imgSrc1, imgSrc2 }: MainCardProps) => {
 
   return (
   <div className="card-container">
     <h2 className='card-title'>{title}</h2>
-    {imgSrc && <Link to="/multiplayer" className='cuac'><img src={imgSrc} alt='competition icon' className='competition-card-svg' /></Link>}
+      {imgSrc1 && <Link to="/lobby/typing" className='cuac'><img src={imgSrc1} alt='competition icon' className='competition-card-svg' /></Link>}
+      {imgSrc2 && <Link to="/lobby/shortcut" className='cuac'><img src={imgSrc2} alt='competition icon' className='competition-card-svg' /></Link>}
   </div>
   )
 
