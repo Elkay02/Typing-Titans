@@ -29,13 +29,13 @@
 }
 
 .char-current {
-  background-color: #FFDBDB;
-  box-shadow: 0 0 20px rgba(0, 255, 178, 0.5);
+  background-color: var(--my-pale);
+  box-shadow: 0 0 20px var(--my-turqoise);
   height: 50px;
   width: 50px;
 }
 
 .char-mistake {
   background-color: var(--bg-red);
-  box-shadow: 0 0 20px rgba(0, 255, 178, 0.5);
+  box-shadow: 0 0 20px var(--my-turqoise);
 }

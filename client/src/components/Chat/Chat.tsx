@@ -2,20 +2,27 @@ import { useEffect, useState, FormEvent } from 'react'
 import './Chat.css'
 import socket from '../../socket';
 
+interface Message{
+  content: string,
+  author: string
+}
+
 const Chat = () => {
 
   const [text, setText] = useState('');
-  const [messages, setMessages] = useState<string[]>([]);
+  const [messages, setMessages] = useState<Message[]>([]);
 
   const handleSend = (e: FormEvent) => {
     e.preventDefault();
-    setMessages(prevMsgs => [...prevMsgs, text]);
+    const msg: Message = {content: text, author: 'You: '}
+    setMessages(prevMsgs => [...prevMsgs, msg]);
     socket.emit('send-message', text)
     setText('');
   }
 
   useEffect(() => {
-    const receiveMessage = (msg: string) => {
+    const receiveMessage = (content: string, author: string) => {
+      const msg: Message = { content: content, author: author }
       setMessages(prevMsgs => [...prevMsgs, msg]);
     };
 
@@ -36,8 +43,11 @@ const Chat = () => {
   return (
     <div id='chat-box'>
       <div id='messages-container'>
-       {messages.map((msg => (
-        <h2 id='left'>{msg}</h2>
+       {messages.map(((msg, index) => (
+         <h2 key={index} className={msg.author === 'You: ' ? 'message sent' : 'message received'}>
+          {msg.author} 
+          <span id='message-content'>{msg.content}</span>
+        </h2>
        )))}
       </div>
       <form id='chat-input-container' onSubmit={handleSend}>

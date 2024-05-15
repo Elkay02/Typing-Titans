@@ -36,7 +36,7 @@ const socket = (server: HttpServer) => {
 
     socket.on('send-message', (msg: string) => {
       const name = userNames[socket.id] ? userNames[socket.id] : 'Anonymous'
-      socket.broadcast.emit('receive-message', msg, name)
+      socket.broadcast.emit('receive-message', msg, name + ': ')
     })
 
     socket.on('isReady', async () => {

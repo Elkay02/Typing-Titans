@@ -19,12 +19,21 @@
   display: none;
 }
 
-#left {
+.message {
   align-self: flex-start;
 }
 
-#right {
-  align-self: flex-end;
+.sent {
+  color: var(--my-turqoise);
+}
+
+.received {
+  color: var(--my-pale);
+}
+
+#message-content {
+  color: var(--main-color);
+  font-weight: 500;
 }
 
 #chat-input {
