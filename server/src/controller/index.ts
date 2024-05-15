@@ -95,13 +95,14 @@ const newProgress = async (req: Request, res: Response) => {
           }
         });
         return res.status(200).json({
-          message: 'Progress updated successfully.',
+          message: 'New daily record!',
           progress: updatedProgress
         });
       } else {
         // Existing speed is greater or equal, do not update
         return res.status(200).json({
-          message: 'Existing progress has a greater or equal speed. No update performed.'
+          message: 'Nice try!\nBut you already did better:',
+          progress: existingProgress
         });
       }
     } else {
@@ -115,7 +116,7 @@ const newProgress = async (req: Request, res: Response) => {
         }
       });
       return res.status(201).json({
-        message: 'New progress created successfully.',
+        message: 'Great start!\nThis is your score to beat:',
         progress: newProgress
       });
     }

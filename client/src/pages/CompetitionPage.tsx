@@ -4,7 +4,6 @@ import CompetitionCard from '../components/CompetitionCard/CompetitionCard';
 import Navbar from '../components/Navbar/Navbar'
 import Shortcut from '../components/Shortcut/Shortcut';
 import Sidebar from '../components/Sidebar/Sidebar'
-import DailyChallenge from '../components/DailyChallenge/DailyChallenge';
 
 interface ComponentMap {
   [key: string]: ReactElement; // Define an index signature for the component map
@@ -15,7 +14,7 @@ const CompetitionPage = () => {
 
   const componentMap: ComponentMap = {
     "/competition/typing": <CompetitionCard />,
-    "/competition/daily": <DailyChallenge />,
+    "/competition/daily": <CompetitionCard />,
     "/competition/shortcut": <Shortcut />,
   };
 

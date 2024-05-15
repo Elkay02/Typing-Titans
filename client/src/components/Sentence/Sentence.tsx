@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import { useState, useEffect, useRef } from 'react'
 
 import './Sentence.css'
@@ -6,15 +5,15 @@ import CharBox from '../CharBox/CharBox';
 import socket from '../../socket';
 import Overlay from '../Overlay/Overlay';
 import { useAppSelector } from '../../redux/hooks';
-import { fetchDailySentence } from '../../services';
+import { fetchDailySentence, updateProgress } from '../../services';
+import DailyOverlay from '../DailyOverlay/DailyOverlay';
 
 const calculateAccuracy = (totalLetters: number, mistakes: number) => {
   return totalLetters > 0 ? (100 - ((mistakes / totalLetters) * 100)) : 100;
 }
 
-const Sentence = ({ mode }: { mode: string }) => {
+const Sentence = ({ daily }: { daily: boolean }) => {
 
-  const daily = mode === 'daily';
 
 
   const [sentence, setSentence] = useState('');
@@ -26,6 +25,10 @@ const Sentence = ({ mode }: { mode: string }) => {
   const [wrongInput, setWrongInput] = useState(false);
   const [isRunning, setIsRunning] = useState(false);
   const [ended, setEnded] = useState(false);
+  const [prog, setProg] = useState({})
+  const [newProg, setNewProg] = useState({})
+
+  const selectedSentence = useAppSelector((state) => state.sentence.sentence);
 
   useEffect(() => {
     if (daily) {
@@ -34,11 +37,10 @@ const Sentence = ({ mode }: { mode: string }) => {
         setLetters(data.split(''));
       });
     } else {
-      const selectedSentence = useAppSelector((state) => state.sentence.sentence);
       setSentence(selectedSentence);
       setLetters(selectedSentence.split(''));
     }
-  }, [mode, daily]);
+  }, [daily, selectedSentence]);
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
@@ -53,7 +55,6 @@ const Sentence = ({ mode }: { mode: string }) => {
 
     if (!daily) {
       // Retrieve the current sentence from state if not 'daily'
-      const selectedSentence = useAppSelector((state) => state.sentence.sentence);
       setSentence(selectedSentence);
       setLetters(selectedSentence.split(''));
     }
@@ -93,30 +94,51 @@ const Sentence = ({ mode }: { mode: string }) => {
   // Update timer and calculate speed/accuracy
   useEffect(() => {
     let timer: number | undefined;
-    const totalLetters = letters.length;
-    const wordsTyped = totalLetters / 5;
-    const typingSpeed = 60 * (wordsTyped / time);
 
-    if (isRunning && myIndex < totalLetters) {
-      setSpeed(typingSpeed);
+    const asyncHandler = async () => {
+      const totalLetters = letters.length;
+      const wordsTyped = totalLetters / 5;
+      const typingSpeed = 60 * (wordsTyped / time);
 
-      timer = setInterval(() => setTime((prevTime) => prevTime + 0.01), 10);
-    } else if (myIndex === totalLetters && isRunning) {
-      clearInterval(timer);
-      const accuracy = calculateAccuracy(totalLetters, mistakes);
-      setSpeed(typingSpeed);
-      if (daily) setEnded(true);
+      if (isRunning && myIndex < totalLetters) {
+        setSpeed(typingSpeed);
+        timer = setInterval(() => setTime((prevTime) => prevTime + 0.01), 10);
+      } else if (myIndex === totalLetters && isRunning) {
+        clearInterval(timer);
+        const accuracy = calculateAccuracy(totalLetters, mistakes);
+        setSpeed(typingSpeed);
 
-      if (!daily) socket.emit('end-competition', time, typingSpeed, accuracy);
-      setIsRunning(false);
+        if (daily) {
+          setNewProg({ speed: typingSpeed, accuracy: accuracy })
+          const data = await updateProgress(1, typingSpeed, accuracy);
+          console.log('Data from async operation:', data);
+          setProg(data)
+          setEnded(true);
+        }
+
+        if (!daily) {
+          socket.emit('end-competition', time, typingSpeed, accuracy);
+        }
+        setIsRunning(false);
+      }
+    };
+
+    asyncHandler();
+
+    if (!daily) {
+      socket.on('winner', () => {
+        setEnded(true);
+      });
     }
 
-    if (!daily) socket.on('winner', () => {
-      setEnded(true)
-    })
-
-    return () => clearInterval(timer);
+    return () => {
+      clearInterval(timer);
+      if (!daily) {
+        socket.off('winner');
+      }
+    };
   }, [isRunning, time, letters.length, myIndex, mistakes, daily]);
+
 
   if (!daily) socket.on('start-competition', () => {
     setEnded(false);
@@ -139,7 +161,10 @@ const Sentence = ({ mode }: { mode: string }) => {
       <h3 className='stats'>Speed: {(Math.round(speed * 100) / 100).toFixed(0)} words/min</h3>
       <h3 className='stats'>Accuracy: {(Math.round(accuracy * 100) / 100).toFixed(1)} %</h3>
       {!daily && <Overlay ended={ended} />}
-      {daily && <button onClick={playAgain}>Retry</button>}
+      {daily &&
+        <><button onClick={playAgain}>Retry</button>
+          <DailyOverlay ended={ended} data={prog} current={newProg} retry={playAgain} /></>
+      }
     </div>
   )
 }

@@ -6,6 +6,8 @@ import { useAppDispatch } from '../../redux/hooks';
 import { setSentence } from '../../redux/sentence';
 
 const CompetitionCard = () => {
+  const pathname = window.location.pathname.split('/').pop() || "";
+  const daily = pathname === 'daily';
 
   const dispatch = useAppDispatch();
 
@@ -15,9 +17,9 @@ const CompetitionCard = () => {
 
   return (
     <div className="competition-card-container">
-      <h2 className='competition-title'>Typing Race</h2>
+      <h2 className='competition-title'>{pathname ? 'Daily Challenge' : 'Typing Race'}</h2>
       <div className='sentence-div'>
-        <Sentence mode={'multiplayer'} />
+        <Sentence daily={daily} />
       </div>
 
     </div>
