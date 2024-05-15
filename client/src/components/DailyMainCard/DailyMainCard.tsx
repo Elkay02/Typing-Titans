@@ -4,7 +4,7 @@ import { LocalizationProvider, DateCalendar } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import './DailyMainCard.css';
 import dayjs from 'dayjs';
-import { fetchDailySentence, fetchProgress } from '../../services';
+import { fetchProgress } from '../../services';
 import { Link } from 'react-router-dom';
 
 const DailyMainCard = () => {
@@ -19,7 +19,6 @@ const DailyMainCard = () => {
 
 	const fetchData = async (newDate: any) => {
 		try {
-			console.log('useEffect ~ fetch:', await fetchDailySentence());
 			const { progress } = await fetchProgress(1, newDate);
 			const { speed, accuracy } = progress;
 			setStats({ speed, accuracy });

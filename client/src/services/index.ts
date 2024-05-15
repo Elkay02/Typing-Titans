@@ -26,16 +26,16 @@ export async function fetchProgress(id: number, day: Date) {
 }
 
 export async function fetchDailySentence() {
-  const url = 'https://zenquotes.io/api/quotes';
+  const url = `${server}/daily/api`;
 
   try {
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
-    const data = await response.json(); // Assuming the API returns JSON
-    console.log('fetchDailySentence ~ response.json():', data);
-    return data;
+    const data = await response.json();
+
+    return data.quote.slice(0, -1);
   } catch (error) {
     console.error('Error fetching daily sentence:', error);
   }

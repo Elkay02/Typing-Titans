@@ -157,6 +157,7 @@ const getProgressByDay = async (req: Request, res: Response) => {
 
   } catch (error: any) {
     console.error('Error managing progress:', error);
+
     return res.status(500).json({
       message: 'Internal server error',
       error: error.message
@@ -169,18 +170,20 @@ const fetchDailySentence = async (req: Request, res: Response) => {
 
   try {
     const response = await fetch(url);
+
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
-    const data = await response.json(); // Assuming the API returns JSON
-    console.log('fetchDailySentence ~ response.json():', data);
-    return res.status(201).json({
-      message: 'progress fetched successfully.',
-      quote: data.q
+    const data = await response.json();
+
+    return res.status(200).json({
+      message: 'Quote fetched successfully.',
+      quote: data[0].q
     });
 
   } catch (error: any) {
-    console.error('Error managing progress:', error);
+    console.error('Error managing quote:', error);
+
     return res.status(500).json({
       message: 'Internal server error',
       error: error.message
