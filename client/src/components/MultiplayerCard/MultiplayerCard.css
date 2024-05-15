@@ -59,7 +59,13 @@
   margin: auto;
   animation: countdown 4s forwards 1s 1;
   min-width: 100px;
-  font-size: 96px;
+  font-size: 72px;
+}
+
+.chat-container {
+  grid-row: 4 / 4;
+  grid-column: 2 / 3;
+  align-self: center;
 }
 
 @keyframes countdown {

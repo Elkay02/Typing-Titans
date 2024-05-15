@@ -9,6 +9,7 @@ import socket from '../../socket';
 import { useAppDispatch } from '../../redux/hooks';
 import { setSentence } from '../../redux/sentence';
 import { setShortcut } from '../../redux/shortcut';
+import Chat from '../Chat/Chat';
 
 interface Shortcut {
   name: string;
@@ -49,6 +50,9 @@ const MultiplayerCard = () => {
       <ReadyButton />
       <div className='countdown-container'>
         <Countdown path={pathname} />
+      </div>
+      <div className='chat-container'>
+        <Chat />
       </div>
     </div>
   )

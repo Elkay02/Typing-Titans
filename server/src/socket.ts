@@ -34,6 +34,11 @@ const socket = (server: HttpServer) => {
       userNames[socket.id] = username;
     });
 
+    socket.on('send-message', (msg: string) => {
+      const name = userNames[socket.id] ? userNames[socket.id] : 'Anonymous'
+      socket.broadcast.emit('receive-message', msg, name)
+    })
+
     socket.on('isReady', async () => {
       readyPlayers = readyPlayers.includes(socket.id)
       ? readyPlayers.filter(id => id != socket.id)
