@@ -14,6 +14,8 @@ router.put('/daily', controller.newProgress);
 router.post('/daily', controller.getProgressByDay);
 router.get('/daily/api', controller.fetchDailySentence);
 
+router.get('/movies', controller.fetchMovies);
+
 router.get('/shortcuts', controller.getShortcuts);
 
 router.post('/api/webhooks', bodyParser.raw({ type: 'application/json' }), controller.svixHook);

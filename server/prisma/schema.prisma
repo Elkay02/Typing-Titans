@@ -39,3 +39,9 @@ model Shortcut {
   windows   String[]
   mac       String[]  
 }
+
+model Movie {
+  id        Int       @id @default(autoincrement())
+  title     String  
+  image     String
+}

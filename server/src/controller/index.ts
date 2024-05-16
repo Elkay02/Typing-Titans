@@ -192,6 +192,39 @@ const fetchDailySentence = async (req: Request, res: Response) => {
   }
 }
 
+const fetchMovies = async (req: Request, res: Response) => {
+  const url = 'https://moviesdatabase.p.rapidapi.com/titles/random?startYear=1995&genre=Animation&limit=50&info=mini_info&list=most_pop_series'; const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'bc23a33af5msh4a2ba185be5b2c3p1c63d5jsn594aceee72fd',
+      'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
+    }
+  };
+
+  try {
+    const response = await fetch(url, options);
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch movies');
+    }
+
+    const data = await response.json();
+
+    const movies = data.results.map((element: any) => {
+      const movie = { img: element.primaryImage.url, title: element.titleText.text }
+      return movie;
+    });
+
+    return res.status(200).json({
+      message: 'Movies fetched successfully.',
+      movies: movies
+    });
+  } catch (error) {
+    console.error('Error fetching movies:', error);
+    return res.status(500).json({ message: 'Failed to fetch movies' });
+  }
+}
+
 const svixHook = async (req: Request, res: Response) => {
   try {
     const payload = req.body;
@@ -215,4 +248,4 @@ const svixHook = async (req: Request, res: Response) => {
   }
 }
 
-export { root, getUsers, newUser, getUsersWithDetails, getShortcuts, newProgress, getProgressByDay, fetchDailySentence, svixHook };
+export { root, getUsers, newUser, getUsersWithDetails, getShortcuts, newProgress, getProgressByDay, fetchDailySentence, fetchMovies, svixHook };
