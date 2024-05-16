@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
     <div className="nav-container">
-      <Link to="/"  className='link'><h2>Typing Titans</h2></Link>
+      <Link to="/"  className='link'><h2 className='main-title'>Typing Titans</h2></Link>
 
       <Link to='/sign-in'>
         <SignIn path='sign-in' />

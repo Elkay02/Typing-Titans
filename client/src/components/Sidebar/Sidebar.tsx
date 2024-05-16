@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { toggleSidebar } from '../../redux/sidebarSlice';
+import { SignOutButton } from '@clerk/clerk-react';
 
 import keyboard from '../../assets/purpleKeyboard.svg'
 import menuIcon from '../../assets/menuIcon.svg'
@@ -46,8 +47,8 @@ const Sidebar = () => {
           {expanded && <span>HELP CENTER</span>}
         </div>
         <div className='main-side-icon-container-expanded'>
-          <img src={exitIcon} alt="Exit Icon" />
-          {expanded && <span>LOG OUT</span>}
+          <SignOutButton><img src={exitIcon} alt="Exit Icon" /></SignOutButton>
+          {expanded && <SignOutButton><span>LOG OUT</span></SignOutButton>}
         </div>
       </div>
     </div>

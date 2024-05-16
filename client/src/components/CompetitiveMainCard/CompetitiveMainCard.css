@@ -11,7 +11,8 @@
 
 .typing-race-card,
 .shortcut-race-card,
-.coming-soon-card {
+.coming-soon-card,
+.movie-title-card {
   position: relative;
   display: flex;
   justify-content: center;
@@ -20,7 +21,8 @@
 
 .typing-race-title,
 .shortcut-race-title,
-.coming-soon-title {
+.coming-soon-title,
+.movie-title-title {
   position: absolute;
   top: 50%;
   display: flex;
@@ -48,6 +50,10 @@
   grid-column: 3 / 4;
 }
 
+.movie-title-title {
+  grid-column: 3 / 4;
+}
+
 .coming-soon-card {
   display: flex;
   grid-column: 3 / 4;
@@ -61,7 +67,8 @@
 
 .typing-race-card:hover .competition-card-svg,
 .shortcut-race-card:hover .competition-card-svg,
-.coming-soon-card:hover .competition-card-svg {
+.coming-soon-card:hover .competition-card-svg,
+.movie-title-card:hover .competition-card-svg {
   transform: scale(1.1);
   opacity: 0.2;
   filter: grayscale(50%);
@@ -69,7 +76,8 @@
 
 .typing-race-card:hover .typing-race-title,
 .shortcut-race-card:hover .shortcut-race-title,
-.coming-soon-card:hover .coming-soon-title {
+.coming-soon-card:hover .coming-soon-title,
+.movie-title-card:hover .movie-title-title {
   visibility: visible;
   opacity: 1;
   color: var(--main-color);

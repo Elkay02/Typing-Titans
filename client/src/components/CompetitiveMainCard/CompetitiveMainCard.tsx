@@ -1,8 +1,9 @@
 import "./CompetitiveMainCard.css";
 import { Link } from "react-router-dom";
-import CompeteCardSVG from "../../assets/CompeteCard.svg";
+import CompeteCardSVG from "../../assets/TypingRace.svg";
 import ShortcutSVG from "../../assets/shortcut.svg";
-import ComingSoonSVG from "../../assets/comingSoon.svg";
+// import ComingSoonSVG from "../../assets/comingSoon.svg";
+import MovieTitleRaceSVG from "../../assets/MovieRace.svg";
 
 const CompetitiveMainCard = () => {
 	return (
@@ -32,18 +33,30 @@ const CompetitiveMainCard = () => {
 					</Link>
 				</>
 			)}
-			{ComingSoonSVG && (
+			{MovieTitleRaceSVG && (
 				<>
-					<Link to="/lobby/movie" className="coming-soon-card">
-					<p className="coming-soon-title">Coming Soon!!!</p>
+					<Link to="/lobby/movie" className="movie-title-card">
+					<p className="movie-title-title">Movie Title Race</p>
 						<img
-							src={ComingSoonSVG}
+							src={MovieTitleRaceSVG}
 							alt="competition card"
 							className="competition-card-svg"
 						/>
 					</Link>
 				</>
 			)}
+						{/* {ComingSoonSVG && (
+				<>
+					<Link to="/lobby/movie" className="coming-soon-card">
+					<p className="coming-soon-title">Coming Soon!!!</p>
+						<img
+							src={MovieTitleRaceSVG}
+							alt="competition card"
+							className="competition-card-svg"
+						/>
+					</Link>
+				</>
+			)} */}
 		</>
 	);
 };
