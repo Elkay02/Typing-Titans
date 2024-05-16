@@ -14,7 +14,7 @@ router.put('/daily', controller.newProgress);
 router.post('/daily', controller.getProgressByDay);
 router.get('/daily/api', controller.fetchDailySentence);
 
-router.get('/movies', controller.fetchMovies);
+router.get('/movies', controller.getMovies);
 
 router.get('/shortcuts', controller.getShortcuts);
 

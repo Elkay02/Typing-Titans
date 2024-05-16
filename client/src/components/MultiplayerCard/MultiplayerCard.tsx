@@ -17,6 +17,11 @@ interface Shortcut {
   mac: string[];
 }
 
+interface Movie {
+  title: string;
+  image: string;
+}
+
 const MultiplayerCard = () => {
   const pathname = window.location.pathname.split('/').pop() || "";
 
@@ -30,8 +35,12 @@ const MultiplayerCard = () => {
   }
   if (pathname === "shortcut") {
     socket.on('shortcuts', (shortcut: Shortcut[]) => {
-      console.log('socket.on ~ shortcut:', shortcut);
       dispatch(setShortcut(shortcut));
+    });
+  }
+  if (pathname === "movie") {
+    socket.on('movies', (movies: Movie[]) => {
+      console.log('socket.on ~ movies:', movies);
     });
   }
 

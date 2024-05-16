@@ -51,3 +51,21 @@ export const fetchShortcuts = async (): Promise<any> => {
     throw error;
   }
 }
+
+export const fetchMovies = async (): Promise<any> => {
+  try {
+    const serverDomain = process.env.SERVER_DOMAIN || 'http://localhost:3000';
+    const response = await fetch(`${serverDomain}/movies`);
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch movies');
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error('Error fetching movies:', error);
+    throw error;
+  }
+}

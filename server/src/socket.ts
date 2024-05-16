@@ -2,7 +2,7 @@ import { instrument } from '@socket.io/admin-ui';
 import { Server as SocketIOServer, Socket } from 'socket.io';
 import { Server as HttpServer } from 'http';
 
-import { fetchShortSentence, fetchShortcuts } from './services/api-service';
+import { fetchMovies, fetchShortSentence, fetchShortcuts } from './services/api-service';
 
 let readyPlayers: string[] = [];
 let userNames: any = {};
@@ -42,12 +42,13 @@ const socket = (server: HttpServer) => {
     socket.on('isReady', async () => {
       readyPlayers = readyPlayers.includes(socket.id)
         ? readyPlayers.filter(id => id != socket.id)
-        : [ ...readyPlayers, socket.id ];
+        : [...readyPlayers, socket.id];
 
       if (readyPlayers.length > 1) {
         io.emit('countdown');
         io.emit('sentence', await fetchShortSentence());
         io.emit('shortcuts', await fetchShortcuts());
+        io.emit('movies', await fetchMovies());
 
         setTimeout(() => {
           readyPlayers = [];

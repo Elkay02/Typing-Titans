@@ -48,7 +48,7 @@ const newUser = async (req: Request, res: Response) => {
 
 const getShortcuts = async (req: Request, res: Response) => {
   try {
-    // Fetch 15 random shortcuts from the database
+    // Fetch 10 random shortcuts from the database
     const shortcuts = await prisma.shortcut.findManyRandom(10, {
       select: { name: true, windows: true, mac: true },
     });
@@ -192,36 +192,16 @@ const fetchDailySentence = async (req: Request, res: Response) => {
   }
 }
 
-const fetchMovies = async (req: Request, res: Response) => {
-  const url = 'https://moviesdatabase.p.rapidapi.com/titles/random?startYear=1995&genre=Animation&limit=50&info=mini_info&list=most_pop_series'; const options = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': 'bc23a33af5msh4a2ba185be5b2c3p1c63d5jsn594aceee72fd',
-      'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
-    }
-  };
-
+const getMovies = async (req: Request, res: Response) => {
   try {
-    const response = await fetch(url, options);
-
-    if (!response.ok) {
-      throw new Error('Failed to fetch movies');
-    }
-
-    const data = await response.json();
-
-    const movies = data.results.map((element: any) => {
-      const movie = { img: element.primaryImage.url, title: element.titleText.text }
-      return movie;
+    // Fetch 10 random movies from the database
+    const movies = await prisma.movie.findManyRandom(10, {
+      select: { title: true, image: true },
     });
-
-    return res.status(200).json({
-      message: 'Movies fetched successfully.',
-      movies: movies
-    });
+    res.status(200).json(movies);
   } catch (error) {
     console.error('Error fetching movies:', error);
-    return res.status(500).json({ message: 'Failed to fetch movies' });
+    res.status(500).json({ error: 'Internal server error' });
   }
 }
 
@@ -248,4 +228,4 @@ const svixHook = async (req: Request, res: Response) => {
   }
 }
 
-export { root, getUsers, newUser, getUsersWithDetails, getShortcuts, newProgress, getProgressByDay, fetchDailySentence, fetchMovies, svixHook };
+export { root, getUsers, newUser, getUsersWithDetails, getShortcuts, newProgress, getProgressByDay, fetchDailySentence, getMovies, svixHook };
