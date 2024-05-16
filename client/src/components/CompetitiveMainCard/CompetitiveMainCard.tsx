@@ -1,7 +1,7 @@
 import "./CompetitiveMainCard.css";
 import { Link } from "react-router-dom";
 import CompeteCardSVG from "../../assets/TypingRace.svg";
-import ShortcutSVG from "../../assets/shortcut.svg";
+import ShortcutSVG from "../../assets/ShortcutBattle.svg";
 // import ComingSoonSVG from "../../assets/comingSoon.svg";
 import MovieTitleRaceSVG from "../../assets/MovieRace.svg";
 
