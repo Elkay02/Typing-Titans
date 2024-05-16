@@ -10,6 +10,7 @@ import { useAppDispatch } from '../../redux/hooks';
 import { setSentence } from '../../redux/sentence';
 import { setShortcut } from '../../redux/shortcut';
 import Chat from '../Chat/Chat';
+import { setMovie } from '../../redux/movie';
 
 interface Shortcut {
   name: string;
@@ -40,7 +41,7 @@ const MultiplayerCard = () => {
   }
   if (pathname === "movie") {
     socket.on('movies', (movies: Movie[]) => {
-      console.log('socket.on ~ movies:', movies);
+      dispatch(setMovie(movies));
     });
   }
 

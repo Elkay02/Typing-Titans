@@ -6,6 +6,7 @@ import lessonsReducer from './lessonsSlice';
 import keyboardReducer from './KeyboardSlice';
 import lessonGameReducer from './lessonGameSlice';
 import shortcutReducer from './shortcut';
+import movieReducer from './movie';
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     keyboard: keyboardReducer,
     lessonGame: lessonGameReducer,
     shortcut: shortcutReducer,
+    movie: movieReducer,
   },
 });
 
