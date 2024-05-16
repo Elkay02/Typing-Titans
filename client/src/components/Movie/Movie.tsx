@@ -1,9 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
 import './Movie.css';
 import socket from '../../socket';
 import Overlay from '../Overlay/Overlay';
 import { useAppSelector } from '../../redux/hooks';
-import { similarity } from '../../utils/search.js';
+import { similarity } from '../../utils/search.ts';
 
 interface Movie {
   title: string;
@@ -41,7 +42,8 @@ const Movie = () => {
 
   const handleChange = () => {
     if (!isRunning && !ended) setIsRunning(true);
-    const sim = similarity(input.toLowerCase(), movies[0].title.toLowerCase());
+
+    const sim = movies.length ? similarity(input.toLowerCase(), movies[0].title.toLowerCase()) : 0;
     if (sim > 0.89) {
       setMovies((prevMovies) => prevMovies.slice(1));
       setInput('');
@@ -53,7 +55,7 @@ const Movie = () => {
 
   useEffect(() => {
     handleChange();
-  }, [input, isRunning, ended, movies]);
+  }, [input]);
 
   useEffect(() => {
     let countdownTimer: number | undefined;
@@ -81,7 +83,7 @@ const Movie = () => {
     if (isRunning) {
       timer = setInterval(() => setTime((prevTime) => prevTime + 0.01), 10);
       if (movies.length === 0) {
-        console.log('useEffect ~ movies:', movies);
+        console.log('useEffect ~ movies');
         clearInterval(timer);
         setEnded(true);
         setIsRunning(false);

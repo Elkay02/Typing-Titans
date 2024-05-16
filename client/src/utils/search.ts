@@ -1,15 +1,15 @@
-export function similarity(string1, string2) {
-  let distance = levenshteinDistance(string1, string2);
-  let maxLength = Math.max(string1.length, string2.length);
-  let similarity = 1 - (distance / maxLength);
+export function similarity(string1: string, string2: string): number {
+  const distance = levenshteinDistance(string1, string2);
+  const maxLength = Math.max(string1.length, string2.length);
+  const similarity = 1 - (distance / maxLength);
   return similarity;
 }
 
-function levenshteinDistance(s, t) {
+function levenshteinDistance(s: string, t: string): number {
   if (s.length === 0) return t.length;
   if (t.length === 0) return s.length;
 
-  let matrix = [];
+  const matrix: number[][] = [];
 
   // Increment along the first column of each row
   for (let i = 0; i <= t.length; i++) {
